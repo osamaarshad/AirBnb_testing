@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "types": ["cypress", "mocha"]  // Include Cypress and Mocha types
+    },
+    "include": [
+      "cypress/**/*.ts"  // Make sure to include your Cypress TypeScript files
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  

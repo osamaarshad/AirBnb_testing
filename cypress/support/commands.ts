@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Automatically visits the base URL before every test
+
+// Cypress custom command to visit the homepage globally before each test
+// cypress/support/commands.ts
+// cypress/support/commands.ts
+
+// cypress/support/commands.ts
+// cypress/support/commands.ts
+
+// Add the custom command here
+Cypress.Commands.add('visitHomePage', () => {
+  cy.visit('https://www.airbnb.com/',{failOnStatusCode:true});
+});
+
+// Set up beforeEach() to call the custom command before each test
+beforeEach(() => {
+  cy.visitHomePage(); // Automatically visits the site before each test
+});

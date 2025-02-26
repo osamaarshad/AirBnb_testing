@@ -1,21 +1,19 @@
 {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "types": ["cypress", "mocha"]  // Include Cypress and Mocha types
-    },
-    "include": [
-    "cypress/**/*.ts",   // Include Cypress files for TS support
-    "support/**/*.ts",
-    "integration/**/*.ts"
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["cypress", "mocha"]
+  },
+  "include": [
+    "cypress/**/*.ts",   // Include all Cypress files under the cypress folder
+    "support/**/*.ts",   // Include files under the support folder (including pages)
+    "integration/**/*.ts" // Include test files
   ],
-    "exclude": [
-      "node_modules"
-    ]
-  }
-  
-  
+  "exclude": [
+    "node_modules"
+  ]
+}

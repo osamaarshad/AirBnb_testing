@@ -5,7 +5,7 @@ class AirbnbPage {
   // Elements for Login
   private socialAuthButtonEmail = '[data-testid="social-auth-button-email"]';
   private emailInput = '[data-testid="email-login-email"]';
-  private submitButton = '.t1dqvypu'; // You might need to adjust this selector
+  private submitButton = '.t1dqvypu'; 
   private passwordInput = '[data-testid="email-signup-password"]';
 
 
@@ -31,9 +31,9 @@ class AirbnbPage {
   public login(email: string, password: string) {
     cy.get(this.socialAuthButtonEmail).click();
     cy.get(this.emailInput).type(email);
-    cy.get(this.submitButton).click(); // Click to submit email
-    cy.get(this.passwordInput).type(password); // Enter password
-    cy.get(this.submitButton).click(); // Submit the password
+    cy.get(this.submitButton).click(); 
+    cy.get(this.passwordInput).type(password); 
+    cy.get(this.submitButton).click(); 
   }
 
   public searchLocation(location: string) {
@@ -127,15 +127,15 @@ class AirbnbPage {
         });
        
 
-        cy.wait(8000);  // Optional wait for the transition/animation to finish (if needed)
+        cy.wait(8000);  
 
-        // Ensure the popup modal with class '.b98pgng' is visible
+        // ensure the popup modal is visible
         cy.get('.b98pgng').should('be.visible');
     
         // Now, ensure the wishlist card is visible inside the modal and click it
         cy.get('[data-testid="save-to-list-modal-wishlist-card"] > [data-testid="card-container"] > .l1ovpqvx')
-          .should('be.visible')  // Ensure the wishlist card is visible
-          .click(); // Click the wishlis
+          .should('be.visible') 
+          .click(); 
 
 
 

@@ -33,8 +33,15 @@
 // cypress/support/commands.ts
 
 // Add the custom command here
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // Prevent the error from failing the test
+  if (err.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+    return false; // Prevents the test from failing
+  }
+});
+
 Cypress.Commands.add('visitHomePage', () => {
-  cy.visit('https://www.airbnb.com/',{failOnStatusCode:true});
+  cy.visit('https://www.airbnb.com/login',{failOnStatusCode:true});
 });
 
 // Set up beforeEach() to call the custom command before each test

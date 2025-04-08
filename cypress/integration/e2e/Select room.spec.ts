@@ -5,7 +5,7 @@ describe('My First Test', () => {
   let CheckoutDate: string;
   let CityIs: string;
 
-  // Load fixture data before the test runs
+  // Load fixture data before the test run
   before(() => {
     cy.fixture('example.json').then((data) => {
       CheckinDate = data.checkinDate;
@@ -22,10 +22,10 @@ describe('My First Test', () => {
     // Call login method here
    airbnbPage.login('farhan1232025@gmail.com', '!A12345678'); 
 
-    airbnbPage.searchLocation('Lahore');  // Grab search bar and type 'Lahore'
-    airbnbPage.selectCheckinDate();  // Select the check-in date
+    airbnbPage.searchLocation('Lahore');  
+    airbnbPage.selectCheckinDate();  
     airbnbPage.verifyCheckoutCalendarVisible();  // Verify that checkout calendar is visible
-    airbnbPage.selectCheckoutDate();  // Select the checkout date
+    airbnbPage.selectCheckoutDate();  
     airbnbPage.submitSearch();  // Click on the search button
 
     // Assertions

@@ -14,8 +14,8 @@ describe('My First Test', () => {
       cy.get('[data-testid="email-signup-password"]').type('!A12345678')
       cy.get('.t1dqvypu').click()
   
-      const CheckinDate = "Mar 19";
-      const CheckoutDate = "Mar 30";
+      const CheckinDate = "Apr 23";
+      const CheckoutDate = "Apr 27";
       
   
       //cy.visit('https://www.airbnb.com/');  // Visit Airbnb's homepage
@@ -30,9 +30,9 @@ describe('My First Test', () => {
         }
       }
       )
-      cy.get('[aria-label="19, Wednesday, March 2025. Available. Select as check-in date."]').click({ force: true })   //slect the checkin date from checkin calender
+      cy.get('[aria-label="23, Wednesday, April 2025. Available. Select as check-in date."]').click({ force: true })   //slect the checkin date from checkin calender
       cy.get('div.cz9siyu.atm_l8_srw7uq.atm_ks_15vqwwr.atm_mk_h2mmj6.atm_vv_1q9ccgz.atm_vy_1osqo2v.atm_wq_kb7nvz.dir.dir-ltr').eq(1).should('be.visible'); // Check if cursor is moved to CheckoutDate and calender is visible
-      cy.get('button[aria-label="30, Sunday, March 2025. Available. Select as checkout date."]').click({ force: true });// Click on the checkout date button
+      cy.get('button[aria-label="27, Sunday, April 2025. Available. Select as checkout date."]').click({ force: true });// Click on the checkout date button
       cy.get('.c1nkokj4').click() //click on search button
   
       //assertion
@@ -61,7 +61,7 @@ describe('My First Test', () => {
         });
       
       // Step 3: Extract price information from elements with class '._hb913q'
-      cy.get('._hb913q').then(($prices) => {
+      cy.get('._w3xh25').then(($prices) => {
         let minPrice = 5000;
         let cheapestRoomIndex = -1;
       

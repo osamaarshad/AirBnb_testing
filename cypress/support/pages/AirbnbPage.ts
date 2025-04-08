@@ -1,32 +1,25 @@
 class AirbnbPage {
-
-
-
-  // Elements for Login
+  
   private socialAuthButtonEmail = '[data-testid="social-auth-button-email"]';
   private emailInput = '[data-testid="email-login-email"]';
   private submitButton = '.t1dqvypu'; 
   private passwordInput = '[data-testid="email-signup-password"]';
-
-
-
-  // Elements
   private locationInput = '#bigsearch-query-location-input';
   private locationSuggestion = '#bigsearch-query-location-suggestion-0'
-  private checkinDateButton = 'button[aria-label="26, Wednesday, March 2025. Available. Select as check-in date."]';
-  private checkoutDateButton = 'button[aria-label="30, Sunday, March 2025. Available. Select as checkout date."]';
+  private checkinDateButton = 'button[aria-label="23, Wednesday, April 2025. Available. Select as check-in date."]';
+  private checkoutDateButton = 'button[aria-label="27, Sunday, April 2025. Available. Select as checkout date."]';
   private checkoutCalendarVisible = 'div.cz9siyu.atm_l8_srw7uq.atm_ks_15vqwwr.atm_mk_h2mmj6.atm_vv_1q9ccgz.atm_vy_1osqo2v.atm_wq_kb7nvz.dir.dir-ltr';
   private searchButton = '.c1nkokj4';
   private checkinDateElement = 'div.v1v28j4b';
   private checkoutDateElement = 'div.v1v28j4b';
-  private roomPriceSelector = '._hb913q'; // price class for rooms
+  private roomPriceSelector = 'div._10d7v0r'; // price class for rooms 
   private roomContainerSelector = '[data-testid="card-container"]'; // room container class
   private verifyLocation = '.f16sug5q';
   private roomTitleSelector = '.t1jojoys'; // room title selector
   private roomInfoSelector = '.t6mzqp7'; // room info selector
   private favoriteButtonSelector = '.ckqgked'; // favorite button selector
 
-  // Methods to interact with elements on the page
+  // Methods 
   
   public login(email: string, password: string) {
     cy.get(this.socialAuthButtonEmail).click();
@@ -96,7 +89,7 @@ class AirbnbPage {
 
     //extract prices
     cy.get(this.roomPriceSelector).then(($prices) => {
-      let minPrice = Infinity;
+      let minPrice = 5000;
       let cheapestRoomIndex = -1;
 
       // Llop through all prices to find the cheapest
@@ -119,12 +112,15 @@ class AirbnbPage {
 
       // assertion 
       cy.get(this.roomContainerSelector)
-        .eq(cheapestRoomIndex)
-        .find(this.roomPriceSelector)
-        .should(($el) => {
-          expect($el.text().trim()).to.equal(`$${minPrice}`) ;
+  .eq(cheapestRoomIndex)
+  .find(this.roomPriceSelector)
+  .should(($el) => {
+    // Ensure to extract text only
+    const getPrice = $el.text().replace(/[^\d.-]/g, '').trim();
+    expect(getPrice).to.equal(`${minPrice}`);
+  });
+
           
-        });
        
 
         cy.wait(8000);  
@@ -132,7 +128,7 @@ class AirbnbPage {
         // ensure the popup modal is visible
         cy.get('.b98pgng').should('be.visible');
     
-        // Now, ensure the wishlist card is visible inside the modal and click it
+        //  wishlist card is visible and click it
         cy.get('[data-testid="save-to-list-modal-wishlist-card"] > [data-testid="card-container"] > .l1ovpqvx')
           .should('be.visible') 
           .click(); 
@@ -148,7 +144,7 @@ class AirbnbPage {
   
 }
 
-export default AirbnbPage; // Ensure you're exporting the class
+export default AirbnbPage; 
 
 
 
@@ -179,13 +175,13 @@ class AirbnbPage {
   // Other elements
   private locationInput = '#bigsearch-query-location-input';
   private locationSuggestion = '#bigsearch-query-location-suggestion-0';
-  private checkinDateButton = 'button[aria-label="19, Wednesday, March 2025. Available. Select as check-in date."]';
-  private checkoutDateButton = 'button[aria-label="30, Sunday, March 2025. Available. Select as checkout date."]';
+  private checkinDateButton = 'button[aria-label="23, Wednesday, April 2025. Available. Select as check-in date."]';
+  private checkoutDateButton = 'button[aria-label="27, Sunday, April 2025. Available. Select as checkout date."]';
   private checkoutCalendarVisible = 'div.cz9siyu.atm_l8_srw7uq.atm_ks_15vqwwr.atm_mk_h2mmj6.atm_vv_1q9ccgz.atm_vy_1osqo2v.atm_wq_kb7nvz.dir.dir-ltr';
   private searchButton = '.c1nkokj4';
   private checkinDateElement = 'div.v1v28j4b';
   private checkoutDateElement = 'div.v1v28j4b';
-  private roomPriceSelector = '._hb913q'; // price class for rooms
+  private roomPriceSelector = 'div._10d7v0r'; // price class for rooms
   private roomContainerSelector = '[data-testid="card-container"]'; // room container class
   private verifyLocation = '.f16sug5q';
 
@@ -262,9 +258,9 @@ class AirbnbPage {
 
 export default AirbnbPage;
 
-
-
-
-
 */
+
+
+
+
 

@@ -33,3 +33,16 @@ describe('Airbnb Date Selection Test', () => {
   });
 });
 */
+//cy.visit('https://www.airbnb.com/');
+            cy.wait(5000);
+            cy.get('[data-testid="cypress-headernav-profile"]').click();
+            cy.get('[data-testid="simple-header-profile-menu"] a:nth-child(1)').click();
+            cy.get('[aria-label="Log in"]').should('be.visible');
+            cy.get('[data-testid="social-auth-button-email"]').click();
+            cy.get('[data-testid="email-login-email"]').should('be.visible').click();
+            cy.get('[data-testid="email-login-email"]').clear().type('enter email');
+            cy.get('[data-testid="signup-login-submit-btn"]').click();
+            cy.get('label[for="email-signup-password"]').should('be.visible').clear().type('enter password');
+            cy.wait(5000);
+            cy.get('[data-testid="signup-login-submit-btn"]').click();
+            cy.wait(5000)
